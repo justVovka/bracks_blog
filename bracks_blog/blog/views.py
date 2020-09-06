@@ -1,9 +1,9 @@
-from django.http import HttpResponse
+from django.shortcuts import render
 
-from .models import Article
+from .models import Article, Category
 
 
 def index(request):
     articles = Article.objects.filter(is_published=True)
-    output = ', '.join([article.link for article in articles])
-    return HttpResponse(output)
+    categories = Category.objects.all()
+    return render(request, 'blog/index.html', locals())

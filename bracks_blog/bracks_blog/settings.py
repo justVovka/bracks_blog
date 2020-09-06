@@ -1,5 +1,7 @@
 from pathlib import Path
 
+import os
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'y!z-9#sulwsbjsal(_$*=3wjx^(nu0)1&g5z&t)+l)7$!r0#b%'
@@ -35,7 +37,9 @@ ROOT_URLCONF = 'bracks_blog.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            os.path.join(BASE_DIR, 'bracks_blog', 'templates')
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
