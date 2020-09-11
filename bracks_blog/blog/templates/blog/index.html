@@ -3,20 +3,13 @@
 {% block title %}Главная{% endblock %}
 
 {% block content %}
-    <h1>Bracks_Blog</h1>
-    <ul>
-    {% for category in categories %}
-        <li>{{ category.title }}</li>
-    {% endfor %}
-    </ul>
     {% for article in articles %}
-    <article>
-        <h2>{{ article.title }}</h2>
-        <p><strong>{{ article.created_on|date:'d.m.Y' }}</strong></p>
-        <p>Автор: <strong>{{ article.author}}</strong></p>
-        <p>Категория: <strong>{{ article.category.title }}</strong></p>
-        <p>{{ article.text|truncatechars:128 }}</p>
-        <hr/>
-    </article>
+        <article>
+            <h2><a href="/blog/{{ article.link }}">{{ article.title }}</a></h2>
+            <p><strong>{{ article.created_on|date:'d.m.Y' }}</strong></p>
+            <p>Автор: <strong>{{ article.author}}</strong></p>
+            <p>Категория: <strong>{{ article.category.title }}</strong></p>
+            <p>{{ article.text|truncatechars:128 }}</p>
+        </article>
     {% endfor %}
 {% endblock %}
