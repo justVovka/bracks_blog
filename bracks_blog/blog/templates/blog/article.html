@@ -6,6 +6,7 @@
         <section class="article-content">
             <article class="article">
                 <h2>{{ article.title }}</h2>
+                <pre>{% for tag in article.tags.all %}@{{ tag }} {% endfor %}</pre>
                 <p><strong>{{ article.created_on|date:'d.m.Y' }}</strong></p>
                 <p>Автор: <strong>{{ article.author}}</strong></p>
                 <p>Категория: <strong>{{ article.category.title }}</strong></p>
