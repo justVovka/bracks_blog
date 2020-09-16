@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ article.title }}{% endblock %}
+
+{% block content %}
+        <section class="article-content">
+            <article class="article">
+                <h2>{{ article.title }}</h2>
+                <p><strong>{{ article.created_on|date:'d.m.Y' }}</strong></p>
+                <p>Автор: <strong>{{ article.author}}</strong></p>
+                <p>Категория: <strong>{{ article.category.title }}</strong></p>
+                <p>{{ article.text }}</p>
+            </article>
+        </section>
+{% endblock %}
