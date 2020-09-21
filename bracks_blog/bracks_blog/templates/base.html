@@ -32,25 +32,16 @@
             <aside class="aside">
                 <h3 class="aside__header">Категории:</h3>
                 <ul class="aside__categories">
-                    <li><a href="#">Python</a></li>
-                    <li><a href="#">Front-End</a></li>
-                    <li><a href="#">Django</a></li>
-                    <li><a href="#">Marketing</a></li>
-                    <li><a href="#">Back-End</a></li>
-                    <li><a href="#">DataBases</a></li>
+                    {% for category in categories %}
+                    <li><a href="/blog/category/{{ category.link }}">{{ category.title }}</a></li>
+                    {% endfor %}
                 </ul>
                 <hr/>
                 <h3 class="aside__header">Тэги:</h3>
                 <div class="aside__tags">
-                    <span class="tag-item"><a href="#">python</a></span>
-                    <span class="tag-item"><a href="#">js</a></span>
-                    <span class="tag-item"><a href="#">html</a></span>
-                    <span class="tag-item"><a href="#">css</a></span>
-                    <span class="tag-item"><a href="#">pip</a></span>
-                    <span class="tag-item"><a href="#">pypi</a></span>
-                    <span class="tag-item"><a href="#">postgreSQL</a></span>
-                    <span class="tag-item"><a href="#">mongo</a></span>
-                    <span class="tag-item"><a href="#">Docker</a></span>
+                    {% for tag in tags %}
+                    <span class="tag-item"><a href="/blog/tag/{{ tag.link }}">@{{ tag.title }}</a></span>
+                    {% endfor %}
                 </div>
             </aside>
         </main>
