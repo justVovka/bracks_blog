@@ -16,9 +16,6 @@
                 <ul>
                     <li><a href="/">Главная</a></li>
                     <li><a href="{% url 'blog:about' %}">Об авторе</a></li>
-                    {% for category in categories %}
-                    <li>{{ category.title }}</li>
-                    {% endfor %}
                 </ul>
             </nav>
             <div class="header__search-panel">
@@ -32,6 +29,21 @@
             <section class="content">
             {% block content %}{% endblock %}
             </section>
+            <aside class="aside">
+                <h3 class="aside__header">Категории:</h3>
+                <ul class="aside__categories">
+                    {% for category in categories %}
+                    <li><a href="/blog/category/{{ category.link }}">{{ category.title }}</a></li>
+                    {% endfor %}
+                </ul>
+                <hr/>
+                <h3 class="aside__header">Тэги:</h3>
+                <div class="aside__tags">
+                    {% for tag in tags %}
+                    <span class="tag-item"><a href="/blog/tag/{{ tag.link }}">@{{ tag.title }}</a></span>
+                    {% endfor %}
+                </div>
+            </aside>
         </main>
     </div>
 </body>
