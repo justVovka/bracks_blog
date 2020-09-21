@@ -32,3 +32,17 @@ body {
 .main_menu ul li + li {
     margin-left: 1.5em;
 }
+
+.main-block {
+    display: flex;
+}
+
+.content {
+    flex-basis: 70%;
+}
+
+.aside {
+    flex-basis: 30%;
+}
+
+.aside
