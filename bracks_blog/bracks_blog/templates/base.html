@@ -33,14 +33,14 @@
                 <h3 class="aside__header">Категории:</h3>
                 <ul class="aside__categories">
                     {% for category in categories %}
-                    <li><a href="/blog/category/{{ category.link }}">{{ category.title }}</a></li>
+                    <li><a href="{% url 'blog:articles_by_category' category.link %}">{{ category.title }}</a></li>
                     {% endfor %}
                 </ul>
                 <hr/>
                 <h3 class="aside__header">Тэги:</h3>
                 <div class="aside__tags">
                     {% for tag in tags %}
-                    <span class="tag-item"><a href="/blog/tag/{{ tag.link }}">@{{ tag.title }}</a></span>
+                    <span class="tag-item"><a href="{% url 'blog:articles_by_tag' tag.link %}">@{{ tag.title }}</a></span>
                     {% endfor %}
                 </div>
             </aside>

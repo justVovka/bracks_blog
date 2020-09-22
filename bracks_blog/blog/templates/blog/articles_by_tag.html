@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ current_category.title }}{% endblock %}
+
+{% block content %}
+    <h1>Статьи с тэгом @{{ current_tag.title }}:</h1>
+    {% for article in articles %}
+        <article>
+            <h2><a href="{% url 'blog:article' article.link %}">{{ article.title }}</a></h2>
+            <pre>{% for tag in article.tags.all %}@{{ tag }} {% endfor %}</pre>
+            <p><strong>{{ article.created_on|date:'d.m.Y' }}</strong></p>
+            <p>Автор: <strong>{{ article.author}}</strong></p>
+            <p>Категория: <strong>{{ article.category.title }}</strong></p>
+            <p>{{ article.text|truncatechars:128 }}</p>
+        </article>
+    {% endfor %}
+{% endblock %}
