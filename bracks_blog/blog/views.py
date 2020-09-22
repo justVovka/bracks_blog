@@ -34,8 +34,8 @@ def articles_by_category(request, category_link):
 
 def articles_by_tag(request, tag_link):
     current_tag = Tag.objects.get(link=tag_link)
-    tag_title = current_tag.title
-    articles = Article.objects.filter(is_published=True, tags__in=[tag_title])
+    tag_id = current_tag.id
+    articles = Article.objects.filter(is_published=True, tags__in=[tag_id])
     categories = Category.objects.all()
     tags = Tag.objects.all()
     return render(request, 'blog/articles_by_tag.html', locals())
