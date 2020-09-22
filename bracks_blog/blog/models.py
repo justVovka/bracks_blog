@@ -29,7 +29,7 @@ class Category(models.Model):
 
 
 class Tag(models.Model):
-    title = models.CharField(primary_key=True, unique=True, null=False, blank=False, max_length=64)
+    title = models.CharField(unique=True, null=False, blank=False, max_length=64)
     link = models.SlugField(unique=True, default='')
 
     def __str__(self):
