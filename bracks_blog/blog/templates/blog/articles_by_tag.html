@@ -4,7 +4,7 @@
 
 {% block content %}
     <h1>Статьи с тэгом @{{ current_tag.title }}:</h1>
-    {% for article in articles %}
+    {% for article in paginated_articles %}
         <article>
             <h2><a href="{% url 'blog:article' article.link %}">{{ article.title }}</a></h2>
             <pre>{% for tag in article.tags.all %}@{{ tag }} {% endfor %}</pre>
@@ -14,4 +14,21 @@
             <p>{{ article.text|truncatechars:128 }}</p>
         </article>
     {% endfor %}
+    <div class="pagination">
+            <span class="step-links">
+                {% if paginated_articles.has_previous %}
+                    <a href="?page=1">&laquo; в начало</a>
+                    <a href="?page={{ paginated_articles.previous_page_number }}">назад</a>
+                {% endif %}
+
+                <span class="current">
+                    Страница {{ paginated_articles.number }} из {{ paginated_articles.paginator.num_pages }}.
+                </span>
+
+                {% if paginated_articles.has_next %}
+                    <a href="?page={{ paginated_articles.next_page_number }}">далее</a>
+                    <a href="?page={{ paginated_articles.paginator.num_pages }}">в конец &raquo;</a>
+                {% endif %}
+            </span>
+        </div>
 {% endblock %}
