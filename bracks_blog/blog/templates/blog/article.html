@@ -5,6 +5,7 @@
 {% block content %}
         <section class="article-content">
             <article class="article">
+                <img src="/media/{{ article.image }}" alt="{{ article.title }}">
                 <h2>{{ article.title }}</h2>
                 <pre>{% for tag in article.tags.all %}@{{ tag }} {% endfor %}</pre>
                 <p><strong>{{ article.created_on|date:'d.m.Y' }}</strong></p>

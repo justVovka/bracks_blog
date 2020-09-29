@@ -5,6 +5,7 @@
 {% block content %}
     {% for article in articles %}
         <article>
+            <img src="/media/{{ article.image }}" alt="{{ article.title }}">
             <h2><a href="{% url 'blog:article' article.link %}">{{ article.title }}</a></h2>
             <pre>{% for tag in article.tags.all %}@{{ tag }} {% endfor %}</pre>
             <p><strong>{{ article.created_on|date:'d.m.Y' }}</strong></p>
