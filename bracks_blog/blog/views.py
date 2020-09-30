@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator
 
 from .models import Article, Category, Tag
@@ -12,7 +12,7 @@ def index(request):
 
 
 def single_article(request, article_link):
-    article = Article.objects.get(link=article_link)
+    article = get_object_or_404(Article, link=article_link)
     categories = Category.objects.all()
     tags = Tag.objects.all()
     return render(request, 'blog/article.html', locals())
@@ -25,7 +25,7 @@ def about(request):
 
 
 def articles_by_category(request, category_link):
-    current_category = Category.objects.get(link=category_link)
+    current_category = get_object_or_404(Category, link=category_link)
     category_id = current_category.id
     articles = Article.objects.filter(is_published=True, category_id=category_id)
     paginator = Paginator(articles, 1)
@@ -37,7 +37,7 @@ def articles_by_category(request, category_link):
 
 
 def articles_by_tag(request, tag_link):
-    current_tag = Tag.objects.get(link=tag_link)
+    current_tag = get_object_or_404(Tag, link=tag_link)
     tag_id = current_tag.id
     articles = Article.objects.filter(is_published=True, tags__in=[tag_id])
     paginator = Paginator(articles, 1)
